@@ -1,8 +1,18 @@
 Configuration
 =============
-AppVeyor: [![AppVeyor](https://ci.appveyor.com/api/projects/status/m1l7adh2cwv488dt/branch/dev?svg=true)](https://ci.appveyor.com/project/aspnetci/Configuration/branch/dev)
+### Porting for .Net Framework 4.0 base on version 1.1.2.
 
-Travis:   [![Travis](https://travis-ci.org/aspnet/Configuration.svg?branch=dev)](https://travis-ci.org/aspnet/Configuration)
+## Install package with:
+* [Wodsoft.Extensions.Configuration](https://www.nuget.org/packages/Wodsoft.Extensions.Configuration)
+* [Wodsoft.Extensions.Configuration.Abstractions](https://www.nuget.org/packages/Wodsoft.Extensions.Configuration.Abstractions)
+* [Wodsoft.Extensions.Configuration.Binder](https://www.nuget.org/packages/Wodsoft.Extensions.Configuration.Binder)
+* [Wodsoft.Extensions.Configuration.CommandLine](https://www.nuget.org/packages/Wodsoft.Extensions.Configuration.CommandLine)
+* [Wodsoft.Extensions.Configuration.EnvironmentVariables](https://www.nuget.org/packages/Wodsoft.Extensions.Configuration.EnvironmentVariables)
+* [Wodsoft.Extensions.Configuration.FileExtensions](https://www.nuget.org/packages/Wodsoft.Extensions.Configuration.FileExtensions)
+* [Wodsoft.Extensions.Configuration.Ini](https://www.nuget.org/packages/Wodsoft.Extensions.Configuration.Ini)
+* [Wodsoft.Extensions.Configuration.Json](https://www.nuget.org/packages/Wodsoft.Extensions.Configuration.Json)
+* [Wodsoft.Extensions.Configuration.UserSecrets](https://www.nuget.org/packages/Wodsoft.Extensions.Configuration.UserSecrets)
+* [Wodsoft.Extensions.Configuration.Xml](https://www.nuget.org/packages/Wodsoft.Extensions.Configuration.Xml)
 
 Configuration is a framework for accessing Key/Value based configuration settings in an application. Includes configuration providers for command line arguments, environment variables, INI files, JSON files, and XML files.
 

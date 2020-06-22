@@ -20,6 +20,8 @@ Microsoft.Extensions.Configuration.IConfigurationSection</Description>
     <PackageTags>configuration</PackageTags>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/wodsoft/configuration</RepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <GenerateNeutralResourcesLanguageAttribute>false</GenerateNeutralResourcesLanguageAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
@@ -33,6 +35,13 @@ Microsoft.Extensions.Configuration.IConfigurationSection</Description>
 
   <ItemGroup Condition="'$(TargetFramework)'=='net45'">
     <PackageReference Include="Microsoft.Extensions.Primitives" Version="1.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
 </Project>
