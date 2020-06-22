@@ -8,7 +8,7 @@ namespace Microsoft.Extensions.Configuration.Ini
     internal static class Resources
     {
         private static readonly ResourceManager _resourceManager
-            = new ResourceManager("Microsoft.Extensions.Configuration.Ini.Resources", typeof(Resources).GetTypeInfo().Assembly);
+            = new ResourceManager("Microsoft.Extensions.Configuration.Ini.Resources", typeof(Resources).Assembly);
 
         /// <summary>
         /// The configuration file '{0}' was not found and is not optional.

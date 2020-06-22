@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <Description>Abstractions of key-value pair based configuration.
@@ -9,7 +9,7 @@ Microsoft.Extensions.Configuration.IConfigurationProvider
 Microsoft.Extensions.Configuration.IConfigurationRoot
 Microsoft.Extensions.Configuration.IConfigurationSection</Description>
     <VersionPrefix>1.1.2</VersionPrefix>
-    <TargetFramework>net40</TargetFramework>
+    <TargetFrameworks>net40;net45</TargetFrameworks>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <AssemblyName>Microsoft.Extensions.Configuration.Abstractions</AssemblyName>
@@ -26,7 +26,12 @@ Microsoft.Extensions.Configuration.IConfigurationSection</Description>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
   </PropertyGroup>
 
-  <ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)'=='net40'">
+    <PackageReference Include="Wodsoft.Extensions.Primitives" Version="1.0.0" />
+    <PackageReference Include="Wodsoft.DotNet40.Runtime" Version="1.0.2" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'=='net45'">
     <PackageReference Include="Microsoft.Extensions.Primitives" Version="1.1.1" />
   </ItemGroup>
 

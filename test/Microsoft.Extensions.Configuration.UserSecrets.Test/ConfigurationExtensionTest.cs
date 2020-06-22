@@ -11,6 +11,10 @@ using Microsoft.Extensions.Configuration.UserSecrets.Test;
 using Newtonsoft.Json.Linq;
 using Xunit;
 
+// Specially note:
+// Test will not pass if this attribute exist with
+// AddUserSecrets_ShowsAssemblyAttributeError_When_ProjectJson_Missing and
+// AddUserSecrets_With_An_Existing_Secret_File
 [assembly: UserSecretsId(UserSecretsTestFixture.TestSecretsId)]
 
 namespace Microsoft.Extensions.Configuration.UserSecrets.Test
@@ -92,7 +96,7 @@ namespace Microsoft.Extensions.Configuration.UserSecrets.Test
 #pragma warning disable CS0618
             var ex = Assert.Throws<InvalidOperationException>(() => builder.AddUserSecrets());
 #pragma warning restore CS0618
-            Assert.Equal(Resources.FormatError_Missing_UserSecretsIdAttribute(Assembly.GetEntryAssembly().FullName), ex.Message);
+            Assert.Equal(Resources.FormatError_Missing_UserSecretsIdAttribute((Assembly.GetEntryAssembly() ?? Assembly.LoadFile(AppDomain.CurrentDomain.SetupInformation.ConfigurationFile.Substring(0, AppDomain.CurrentDomain.SetupInformation.ConfigurationFile.Length - 7))).FullName), ex.Message);
         }
 
         [Fact]

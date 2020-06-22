@@ -8,7 +8,7 @@ namespace Microsoft.Extensions.Configuration.UserSecrets
     internal static class Resources
     {
         private static readonly ResourceManager _resourceManager
-            = new ResourceManager("Microsoft.Extensions.Configuration.UserSecrets.Resources", typeof(Resources).GetTypeInfo().Assembly);
+            = new ResourceManager("Microsoft.Extensions.Configuration.UserSecrets.Resources", typeof(Resources).Assembly);
 
         /// <summary>
         /// Value cannot be null or an empty string.

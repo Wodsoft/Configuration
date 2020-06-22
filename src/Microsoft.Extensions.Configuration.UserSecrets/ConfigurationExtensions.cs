@@ -3,6 +3,7 @@
 
 using System;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using Microsoft.Extensions.Configuration.UserSecrets;
 using Microsoft.Extensions.FileProviders;
@@ -25,7 +26,7 @@ namespace Microsoft.Extensions.Configuration
         /// <returns></returns>
         public static IConfigurationBuilder AddUserSecrets<T>(this IConfigurationBuilder configuration)
             where T : class
-            => configuration.AddUserSecrets(typeof(T).GetTypeInfo().Assembly);
+            => configuration.AddUserSecrets(typeof(T).Assembly);
 
         /// <summary>
         /// <para>
@@ -47,14 +48,14 @@ namespace Microsoft.Extensions.Configuration
                 throw new ArgumentNullException(nameof(configuration));
             }
 
-            var entryAssembly = Assembly.GetEntryAssembly();
+            var entryAssembly = Assembly.GetEntryAssembly() ?? Assembly.LoadFile(AppDomain.CurrentDomain.SetupInformation.ConfigurationFile.Substring(0, AppDomain.CurrentDomain.SetupInformation.ConfigurationFile.Length - 7));
             if (entryAssembly == null)
             {
                 // can occur inside an app domain
                 throw new InvalidOperationException(Resources.Error_EntryAssemblyNull);
             }
 
-            var attribute = entryAssembly.GetCustomAttribute<UserSecretsIdAttribute>();
+            var attribute = entryAssembly.GetCustomAttributes(typeof(UserSecretsIdAttribute), true).Cast<UserSecretsIdAttribute>().FirstOrDefault();
             if (attribute != null)
             {
                 return AddUserSecrets(configuration, attribute.UserSecretsId);
@@ -94,7 +95,7 @@ namespace Microsoft.Extensions.Configuration
                 throw new ArgumentNullException(nameof(assembly));
             }
 
-            var attribute = assembly.GetCustomAttribute<UserSecretsIdAttribute>();
+            var attribute = assembly.GetCustomAttributes(typeof(UserSecretsIdAttribute), true).Cast<UserSecretsIdAttribute>().FirstOrDefault();
             if (attribute == null)
             {
                 throw MissingAttributeException(assembly);

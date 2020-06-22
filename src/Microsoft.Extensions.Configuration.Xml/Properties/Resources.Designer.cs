@@ -8,7 +8,7 @@ namespace Microsoft.Extensions.Configuration.Xml
     internal static class Resources
     {
         private static readonly ResourceManager _resourceManager
-            = new ResourceManager("Microsoft.Extensions.Configuration.Xml.Resources", typeof(Resources).GetTypeInfo().Assembly);
+            = new ResourceManager("Microsoft.Extensions.Configuration.Xml.Resources", typeof(Resources).Assembly);
 
         /// <summary>
         /// Encrypted XML is not supported on this platform.
